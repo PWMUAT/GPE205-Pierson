@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class Pawn : MonoBehaviour
+{
+    /// <summary>
+    /// Variable for movement speed
+    /// </summary>
+    public float moveSpeed;
+    /// <summary>
+    /// Variable for rotation speed
+    /// </summary>
+    public float turnSpeed;
+
+    // Start is called before the first frame update
+    public virtual void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    public virtual void Update()
+    {
+        
+    }
+
+    public abstract void MoveForwards();
+    public abstract void MoveBackwards();
+    public abstract void RotateClockwise();
+    public abstract void RotateCounterClockwise();
+    public abstract void Shoot();
+}
