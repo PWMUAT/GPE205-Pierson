@@ -47,9 +47,12 @@ public class PlayerController : Controller
     // Update is called once per frame
     public override void Update()
     {
-        base.Update();
+        if (pawn.GetComponent<DeathComponent>() == null)
+        {
+            base.Update();
 
-        ProcessInputs();
+            ProcessInputs();
+        }
     }
 
     public void ProcessInputs()

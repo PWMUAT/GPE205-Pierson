@@ -22,17 +22,18 @@ public class Health : MonoBehaviour
     /// <param name="source">The source of the damage</param>
     public void TakeDamage(float damage, Pawn source)
     {
+
         //reduce health by amount of damage
-        currentHealth = currentHealth - damage;
+        currentHealth -=  damage;
         //clamp to zero
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         //debug damage
         Debug.Log(source.name + " did " + damage + " damage to " + gameObject.name);
         //other way of doing same thing
-        Debug.LogFormat("{0} did {1} damage to {2}.", source.name, damage, gameObject.name);
+        //Debug.LogFormat("{0} did {1} damage to {2}.", source.name, damage, gameObject.name);
 
         //if health is zero, then die
-        if(currentHealth <= maxHealth)
+        if(currentHealth <= 0)
         {
             Die(source);
         }
@@ -45,8 +46,8 @@ public class Health : MonoBehaviour
         {
             //debug killed message
             Debug.Log(source.name + " killed " + gameObject.name);
-            //destroy self
-            Destroy(gameObject);
+            //mark self as dead
+            gameObject.AddComponent<DeathComponent>();
         }
     }
 }

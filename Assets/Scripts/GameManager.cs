@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region
+    #region variables
     /// <summary>
     /// The static instance of this class which can only exist once
     /// </summary>
     public static GameManager Instance;
 
     public List<PlayerController> players;
+    public List<AIController> AIs;
 
     //prefabs
     public PlayerController playerControllerPrefab;
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour
 
         //define the list of players
         players = new List<PlayerController>();
+
+        AIs = new List<AIController>();
     }
 
     private void Start()
@@ -56,4 +59,5 @@ public class GameManager : MonoBehaviour
         //hook components up
         newController.pawn = newPawn;
     }
+
 }
