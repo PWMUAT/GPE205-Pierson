@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1945381212580900423}
   - component: {fileID: 8120114943828435034}
   - component: {fileID: 1894288616465468648}
+  - component: {fileID: 8726185724029396480}
   m_Layer: 0
   m_Name: Default AI
   m_TagString: Untagged
@@ -139,7 +140,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!114 &8026165699209196951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,10 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efa717f29b2ad444b214e709e6e0d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
-  turnSpeed: 85
+  moveSpeed: 30
+  turnSpeed: 65
   noiseMultiplier: 0
   shellPrefab: {fileID: 174428445474341278, guid: c4161e4023c4aca46a0f66405a7fa1fa, type: 3}
+  defaultShellType: {fileID: 174428445474341278, guid: c4161e4023c4aca46a0f66405a7fa1fa, type: 3}
+  altShellType: {fileID: 174428445474341278, guid: 990373ad947e10f4f9c58c66e8c43dae, type: 3}
   fireForce: 500
   shellDamage: 15
   shellLifespan: 3
@@ -197,6 +200,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &8726185724029396480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643284836560605094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b81fccce26ea59439b442a7d7d2d957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8630785628027730056
 GameObject:
   m_ObjectHideFlags: 0

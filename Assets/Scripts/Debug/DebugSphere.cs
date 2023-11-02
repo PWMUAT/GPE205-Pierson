@@ -8,9 +8,10 @@ using UnityEngine;
 public class DebugSphere : MonoBehaviour
 {
     public float radius;
+    public Color color = Color.green;
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = color;
         Gizmos.DrawSphere(gameObject.transform.position, radius);
     }
 }

@@ -17,6 +17,8 @@ public class TankPawn : Pawn
 
     //variables used in firing
     public GameObject shellPrefab;
+    public GameObject defaultShellType;
+    public GameObject altShellType;
     public float fireForce;
     public float shellDamage;
     public float shellLifespan;
@@ -99,5 +101,25 @@ public class TankPawn : Pawn
         Vector3 vectorToTarget = targetPosition - transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(vectorToTarget, Vector3.up);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnSpeed * steerMultiplier * Time.deltaTime);
+    }
+
+    public void AddMoveSpeed(float speed)
+    {
+        //only need add because adding negative is subtracting
+        moveSpeed += speed;
+    }
+
+    public void swapAmmoType()
+    {
+        //swap ammo type to alt if its default
+        if(shellPrefab == defaultShellType)
+        {
+            shellPrefab = altShellType;
+        }
+        //else swap back
+        else
+        {
+            shellPrefab = defaultShellType;
+        }
     }
 }

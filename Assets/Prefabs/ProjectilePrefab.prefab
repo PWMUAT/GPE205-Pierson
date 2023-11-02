@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDone: 0
   owner: {fileID: 0}
+  collisionDestroy: 1

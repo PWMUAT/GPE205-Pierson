@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1945381212580900423}
   - component: {fileID: 6977583039868760150}
   - component: {fileID: 8194464244521063333}
+  - component: {fileID: 3830940776800852238}
   m_Layer: 0
   m_Name: Player Tank
   m_TagString: Untagged
@@ -156,6 +157,8 @@ MonoBehaviour:
   turnSpeed: 85
   noiseMultiplier: 1
   shellPrefab: {fileID: 174428445474341278, guid: c4161e4023c4aca46a0f66405a7fa1fa, type: 3}
+  defaultShellType: {fileID: 174428445474341278, guid: c4161e4023c4aca46a0f66405a7fa1fa, type: 3}
+  altShellType: {fileID: 174428445474341278, guid: 990373ad947e10f4f9c58c66e8c43dae, type: 3}
   fireForce: 1500
   shellDamage: 15
   shellLifespan: 3
@@ -197,6 +200,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &3830940776800852238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643284836560605094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b81fccce26ea59439b442a7d7d2d957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8630785628027730056
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class DamageOnHit : MonoBehaviour
 {
     public float damageDone;
     public Pawn owner;
+    public bool collisionDestroy;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -18,7 +19,10 @@ public class DamageOnHit : MonoBehaviour
             otherHealth.TakeDamage(damageDone, owner);
         }
 
-        //destroy projectile if it hits anything
-        Destroy(gameObject);
+        if(collisionDestroy)
+        {
+            //destroy projectile if it hits anything
+            Destroy(gameObject);
+        }
     }
 }

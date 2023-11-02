@@ -31,6 +31,10 @@ public class DumbAI : AIController
     }
     public override void MakeDecisions()
     {
+        if (target == null)
+        {
+            ChangeState(AIState.ChooseTarget);
+        }
         switch (currentState)
         {
             case AIState.Idle:

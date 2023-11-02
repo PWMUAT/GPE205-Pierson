@@ -53,12 +53,7 @@ MonoBehaviour:
   waypointStopDistance: 0.5
   fireRate: 1
   waitTime: 3
+  collisionRange: 3
   target: {fileID: 0}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   currentState: 3

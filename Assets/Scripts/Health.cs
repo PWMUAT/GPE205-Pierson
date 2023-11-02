@@ -39,6 +39,32 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Heal(float healing)
+    {
+        //increase health
+        currentHealth += healing;
+        //clamp to zero
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        //debug healing
+        Debug.Log(gameObject.name + " healed for " + healing + " points.");
+    }
+
+    public void OverHeal(float healing)
+    {
+        //can heal without clamp
+        currentHealth += healing;
+        //debug healing
+        Debug.Log(gameObject.name + " healed for " + healing + " points.");
+    }
+
+    public void AddMaxHealth(float addedHealth)
+    {
+        //add max health
+        maxHealth += addedHealth;
+        //heal for same amount to keep ratio
+        Heal(addedHealth);
+    }
+
     public void Die(Pawn source)
     {
         //if source is valid

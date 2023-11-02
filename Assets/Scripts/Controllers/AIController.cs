@@ -46,10 +46,10 @@ public class AIController : Controller
         if (GameManager.Instance != null)
         {
             //check if player list exists
-            if (GameManager.Instance.AIs != null)
+            if (GameManager.Instance.AI != null)
             {
                 //add self to player list
-                GameManager.Instance.AIs.Add(this);
+                GameManager.Instance.AI.Add(this);
             }
         }
     }
@@ -77,6 +77,10 @@ public class AIController : Controller
 
     public virtual void MakeDecisions()
     {
+        if(target == null)
+        {
+            ChangeState(AIState.ChooseTarget);
+        }
         switch (currentState)
         {
             case AIState.Idle:
