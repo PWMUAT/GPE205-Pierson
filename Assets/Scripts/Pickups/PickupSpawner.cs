@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PickupSpawner : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PickupSpawner : MonoBehaviour
     public float spawnDelay;
     private float nextSpawnTime;
     private Transform tf;
+    public AudioSource SFXSource;
+    public AudioClip pickupSound;
+    private bool playedPickupSound = true;
 
 
     //Start is called before the first frame update
@@ -24,6 +28,13 @@ public class PickupSpawner : MonoBehaviour
         //nothing spawns
         if (spawnedPickup == null)
         {
+            if(!playedPickupSound)
+            {
+                //play sound on pickup
+                SFXSource.PlayOneShot(pickupSound);
+                playedPickupSound = true;
+            }
+
             //spawn
             if (Time.time > nextSpawnTime)
             {
@@ -32,6 +43,8 @@ public class PickupSpawner : MonoBehaviour
                 nextSpawnTime = Time.time + spawnDelay;
 
                 spawnedPickup.transform.parent = gameObject.transform;
+
+                playedPickupSound = false;
             }
         }
         else

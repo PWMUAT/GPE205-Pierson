@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     /// The pawn that the controller is in charge of.
     /// </summary>
     public Pawn pawn;
+    public int score;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -19,5 +20,10 @@ public class Controller : MonoBehaviour
     public virtual void Update()
     {
         
+    }
+
+    public virtual void AddScore(int modifyScore)
+    {
+
     }
 }

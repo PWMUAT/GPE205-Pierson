@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class TankShooter : Shooter
 {
     //point to fire shells from
     public Transform firepointTransform;
+
+    public AudioSource fireAudio;
+    public AudioClip fireAudioClip;
 
     // Start is called before the first frame update
     public override void Start()
@@ -24,6 +28,8 @@ public class TankShooter : Shooter
     {
         //instantiate projectile on fire point
         GameObject newShell = Instantiate(shellPrefab, firepointTransform.position, firepointTransform.rotation);
+
+        fireAudio.PlayOneShot(fireAudioClip);
 
         #region Modify DamageOnHit component
         //get damage on hit component from shell

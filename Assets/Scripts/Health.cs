@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Health : MonoBehaviour
 {
     private float currentHealth;
 
     public float maxHealth;
+
+    public int pointsOnKill = 5;
+
+    public Image healthBar;
+
+    public GameObject deathAudio;
+    public AudioSource damageAudio;
+    public AudioClip damageClip;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +42,11 @@ public class Health : MonoBehaviour
         //other way of doing same thing
         //Debug.LogFormat("{0} did {1} damage to {2}.", source.name, damage, gameObject.name);
 
+        //display health visually
+        healthBar.fillAmount = currentHealth/maxHealth;
+
+        damageAudio.PlayOneShot(damageClip);
+
         //if health is zero, then die
         if(currentHealth <= 0)
         {
@@ -47,6 +62,9 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         //debug healing
         Debug.Log(gameObject.name + " healed for " + healing + " points.");
+
+        //display health visually
+        healthBar.fillAmount = currentHealth / maxHealth;
     }
 
     public void OverHeal(float healing)
@@ -55,6 +73,9 @@ public class Health : MonoBehaviour
         currentHealth += healing;
         //debug healing
         Debug.Log(gameObject.name + " healed for " + healing + " points.");
+
+        //display health visually
+        healthBar.fillAmount = currentHealth / maxHealth;
     }
 
     public void AddMaxHealth(float addedHealth)
@@ -70,10 +91,15 @@ public class Health : MonoBehaviour
         //if source is valid
         if (source != null)
         {
+            //spawn death sound
+            GameObject deathSFX = Instantiate(deathAudio, this.gameObject.transform.position, this.gameObject.transform.rotation);
             //debug killed message
             Debug.Log(source.name + " killed " + gameObject.name);
             //mark self as dead
             gameObject.AddComponent<DeathComponent>();
+            //add points to killer
+            source.controller.AddScore(pointsOnKill);
+            Destroy(this);
         }
     }
 }

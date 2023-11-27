@@ -20,7 +20,7 @@ public class MapGenerator : MonoBehaviour
         GenerateMap();
         if(mapOfTheDay)
         {
-            randomSeed += Convert.ToInt32(System.DateTime.Today.Ticks);
+            randomSeed += DateTime.Today.Day;
         }
 
         UnityEngine.Random.InitState(randomSeed);

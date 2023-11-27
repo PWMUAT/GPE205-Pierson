@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class PlayerController : Controller
@@ -10,6 +12,10 @@ public class PlayerController : Controller
     public KeyCode rotateClockwiseKey;
     public KeyCode rotateCounterClockwiseKey;
     public KeyCode shootKey;
+
+    public TMP_Text livesText;
+
+    public int lives = 3;
 
     // Start is called before the first frame update
     public override void Start()
@@ -26,6 +32,9 @@ public class PlayerController : Controller
                 GameManager.Instance.players.Add(this);
             }
         }
+
+        //setting UI text
+        livesText.text = "Lives: " + lives;
     }
 
     public void OnDestroy()
@@ -57,29 +66,46 @@ public class PlayerController : Controller
 
     public void ProcessInputs()
     {
-        if(Input.GetKey(moveForwardKey)) 
+        if (pawn != null)
         {
-            pawn.MoveForwards();
-        }
+            if (Input.GetKey(moveForwardKey))
+            {
+                pawn.MoveForwards();
+            }
 
-        if (Input.GetKey(moveBackwardKey))
-        {
-            pawn.MoveBackwards();
-        }
+            if (Input.GetKey(moveBackwardKey))
+            {
+                pawn.MoveBackwards();
+            }
 
-        if (Input.GetKey(rotateClockwiseKey))
-        {
-            pawn.RotateClockwise();
-        }
+            if (Input.GetKey(rotateClockwiseKey))
+            {
+                pawn.RotateClockwise();
+            }
 
-        if (Input.GetKey(rotateCounterClockwiseKey))
-        {
-            pawn.RotateCounterClockwise();
-        }
+            if (Input.GetKey(rotateCounterClockwiseKey))
+            {
+                pawn.RotateCounterClockwise();
+            }
 
-        if (Input.GetKeyDown(shootKey))
-        {
-            pawn.Shoot();
+            if (Input.GetKeyDown(shootKey))
+            {
+                pawn.Shoot();
+            }
         }
+    }
+    public override void AddScore(int modifyScore)
+    {
+        base.AddScore(modifyScore);
+        score += modifyScore;
+    }
+
+    public void LoseLife()
+    {
+        //losing a life
+        lives--;
+
+        //setting UI text
+        livesText.text = "Lives: " + lives;
     }
 }

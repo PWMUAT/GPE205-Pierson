@@ -6,6 +6,7 @@ using static UnityEditor.ShaderData;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 using UnityEngine.UIElements;
 using System;
+using UnityEngine.SocialPlatforms.Impl;
 
 [System.Serializable]
 public class AIController : Controller
@@ -379,5 +380,10 @@ public class AIController : Controller
         {
             steeringAmount = collisionRange / hit.distance;
         }
+    }
+    public override void AddScore(int modifyScore)
+    {
+        base.AddScore(modifyScore);
+        score += modifyScore;
     }
 }

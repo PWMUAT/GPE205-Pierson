@@ -74,4 +74,8 @@ public class PowerupManager : MonoBehaviour
         //clear list
         removeQueue.Clear();
     }
+    public void AddPoints(int points)
+    {
+        
+    }
 }
